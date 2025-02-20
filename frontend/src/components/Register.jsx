@@ -24,7 +24,7 @@ function Register() {
     setError('');
 
     try {
-      await api.post('/api/users/register', formData);
+      await api.post('/users/register', formData);
       alert('Registration successful! Check your email for password.');
       navigate('/login');
     } catch (err) {

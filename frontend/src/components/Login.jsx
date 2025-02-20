@@ -24,7 +24,7 @@ function Login() {
     setError('');
 
     try {
-      const response = await api.post('/api/users/login', formData);
+      const response = await api.post('/users/login', formData);
       login(response.data);
       navigate('/profile');
     } catch (err) {

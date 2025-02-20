@@ -44,7 +44,7 @@ function VideoUploadModal({ isOpen, onClose, onUploadSuccess }) {
 
     try {
       setLoading(true);
-      const response = await api.post('/api/videos/upload-video', videoData,
+      const response = await api.post('/videos/upload-video', videoData,
         {
           headers: {
               'Content-Type': 'multipart/form-data',

@@ -9,11 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  server: {
-    proxy: {
-      '/api': 'https://smart-source-task.onrender.com'
-    },   
+  server: {  
     host: true,
-    allowedHosts:"smart-source-task-1.onrender.com"
   }
 })

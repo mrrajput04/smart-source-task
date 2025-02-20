@@ -13,6 +13,7 @@ export default defineConfig({
     proxy: {
       '/api': 'https://smart-source-task.onrender.com'
     },   
-    host: true
+    host: true,
+    allowedHosts:"smart-source-task-1.onrender.com"
   }
 })

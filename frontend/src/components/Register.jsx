@@ -1,7 +1,7 @@
 // src/components/Register.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../config/api';
 
 function Register() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Register() {
     setError('');
 
     try {
-      await axios.post('/api/users/register', formData);
+      await api.post('/api/users/register', formData);
       alert('Registration successful! Check your email for password.');
       navigate('/login');
     } catch (err) {

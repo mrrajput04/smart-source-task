@@ -1,7 +1,7 @@
 // src/components/VideoUploadModal.jsx
 import { useState } from 'react';
-import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import api from '../../config/api';
 
 function VideoUploadModal({ isOpen, onClose, onUploadSuccess }) {
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ function VideoUploadModal({ isOpen, onClose, onUploadSuccess }) {
 
     try {
       setLoading(true);
-      const response = await axios.post('/api/videos/upload-video', videoData,
+      const response = await api.post('/api/videos/upload-video', videoData,
         {
           headers: {
               'Content-Type': 'multipart/form-data',

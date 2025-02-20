@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../../config/api';
 
 function Login() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Login() {
     setError('');
 
     try {
-      const response = await axios.post('/api/users/login', formData);
+      const response = await api.post('/api/users/login', formData);
       login(response.data);
       navigate('/profile');
     } catch (err) {

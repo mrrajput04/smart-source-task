@@ -1,8 +1,8 @@
 // src/components/Profile.jsx
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
 import VideoUploadModal from './VideoModal';
+import api from '../../config/api';
 
 function Profile() {
   const { user, logout } = useAuth();
@@ -19,7 +19,7 @@ function Profile() {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await axios.get('/api/users/user-info',{
+      const response = await api.get('/api/users/user-info',{
         headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${user.token}` 
@@ -36,7 +36,7 @@ function Profile() {
 
   const fetchVideos = async () => {
     try {
-      const response = await axios.get('/api/videos/videos', {
+      const response = await api.get('/api/videos/videos', {
         headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${user.token}` 
@@ -68,7 +68,7 @@ function Profile() {
     user = JSON.parse(user)
     try {
       setLoading(true);
-      await axios.post('/api/users/upload-profile-picture', formData, {
+      await api.post('/api/users/upload-profile-picture', formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${user.token}` 
@@ -101,7 +101,7 @@ function Profile() {
 
     try {
       setLoading(true);
-      await axios.post('/api/users/upload-video', formData);
+      await api.post('/api/users/upload-video', formData);
       // Refresh user data or update video list
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to upload video');
